@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>EventosApp</title>
+</head>
+<body>
+	 <h1>Lista de Eventos</h1>
+	 <h3><a href="/api/v1/cadastrarEventos">Cadastrar Evento</a></h3>
+	 
+	 <div th:each="evento : ${eventos}">
+	 	<div class="row">
+	 		<p><span th:text="${evento.nome}"></span></p>
+	 		<p><span th:text="${evento.local}"></span></p>
+	 		<p><span th:text="${evento.data}"></span></p>
+	 		<p><span th:text="${evento.hora}"></span></p>	
+	 	</div>
+
+	 </div>
+	
+	
+</body>
+</html>
