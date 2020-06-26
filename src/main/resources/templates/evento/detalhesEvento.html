@@ -14,27 +14,27 @@
       
 </head>
 <body>
-	 <h1>Lista de Eventos</h1>
-	 <h3><a href="/api/v1/cadastrarEventos" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar Evento</a></h3>
-	 <Table class="container">
-		<thead>
-			<tr>
-				<th>Nome</th>
-				<th>Local</th>
-				<th>Data</th>
-				<th>Horario</th>
-			</tr>
-		</thead>
-		<tbody>	 
-	 		<tr th:each="evento : ${eventos}">
-		 		<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.id)).build()}"><span th:text="${evento.nome}"></span></a></td>
-		 		<td><span th:text="${evento.local}"></span></td>
-		 		<td><span th:text="${evento.data}"></span></td>
-		 		<td><span th:text="${evento.hora}"></span></td>	
-	 		</tr>
-	 	</tbody>
-	
-	 </Table>
+	 <h1>Evento</h1>
+	 <h3><a href="/api/v1/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a></h3>
+	 <div th:each="evento : ${evento}" class="container">
+	 		<div class="row">
+	 			<div class="card-panel yellow lighten-2">
+	 				<h5><p>Nome: <span th:text="${evento.nome}"></span></p></h5>
+	 			</div>
+	 			<div class="card-panel red lighten-2">
+		 			<h5><p>Local: <span th:text="${evento.local}"></span></p></h5>
+		 		</div>
+		 		<div class="card-panel blue lighten-2">
+		 			<h5><p>Data: <span th:text="${evento.data}"></span></p></h5>
+		 		</div>
+		 		<div class="card-panel white lighten-2">
+		 			<h5><p>Horário: <span th:text="${evento.hora}"></span></p></h5>
+		 		</div>
+	 		</div>
+	 
+	 </div>
+
+
 	 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
      <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>
      
