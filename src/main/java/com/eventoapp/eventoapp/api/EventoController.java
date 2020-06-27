@@ -19,7 +19,7 @@ public class EventoController {
 	@Autowired
 	private EventoService service;
 	
-	@GetMapping("/cadastrarEventos")
+	@GetMapping("/eventos/cadastrarEventos")
 	public String retornaEventos() {
 		
 		return "evento/formEvento";
@@ -36,15 +36,15 @@ public class EventoController {
 		}
 	}
 	
-	@PostMapping("/cadastrarEventos")
+	@PostMapping("/eventos/cadastrarEventos")
 	public String cadastraEvento(Evento evento) {
 		service.postEvento(evento);
 		
-		return "redirect:/api/v1/cadastrarEventos";
+		return "redirect:/api/v1/eventos/cadastrarEventos";
 		
 	}
 	
-	@GetMapping("/detalhesEvento/{id}")
+	@GetMapping("/eventos/detalhesEvento/{id}")
 	public ModelAndView detalhesEvento(@PathVariable("id") Long id) {
 		ModelAndView mv = service.getIdEvento(id);
 		
@@ -55,7 +55,6 @@ public class EventoController {
 			return mv;
 		}
 	}
-	
-	
+
 	
 }

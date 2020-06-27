@@ -14,32 +14,50 @@
       
 </head>
 <body>
-	 <h1>Evento</h1>
-	 <h3><a href="/api/v1/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista do Eventos</a></h3>
-	 <div th:each="evento : ${evento}" class="container">
-	 	<div class="row">
-	 		<p>Nome: <span th:text="${evento.nome}"></span></p>
-		 	<p>Local: <span th:text="${evento.local}"></span></p>
-		 	<p>Data: <span th:text="${evento.data}"></span></p>	 				 		
-		 	<p>Horário: <span th:text="${evento.hora}"></span></p>
-	 	</div>
-	 	
-	 	<div class="container">
-		 <form method="post">
-		 	<h5>Convidado</h5>
-		 	<div class="row">
-		 		<div class="input-field col s6">
-		 		Nome: <input type="text" name="nomeConvidado"/>
-		 		</div>
-		 		<div class="input-field col s6">
-		 		Rg: <input type="text" name="rg"/>
-		 		</div>
-		 	</div>
-		 	<button class="waves-effect waves-light btn" type="submit"><i class="material-icons left">save</i>Adicionar</button>
-		 </form>
-	 	</div>
+	 <div class="container">
+	 	<h1>Evento</h1>
+	 	<h3><a href="/api/v1/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista do Eventos</a></h3>
 	 </div>
-
+	 
+	 <div th:each="evento : ${evento}" class="container">
+		 	<div class="row">
+		 		<p>Nome: <span th:text="${evento.nome}"></span></p>
+			 	<p>Local: <span th:text="${evento.local}"></span></p>
+			 	<p>Data: <span th:text="${evento.data}"></span></p>	 				 		
+			 	<p>Horário: <span th:text="${evento.hora}"></span></p>
+		 	</div>
+		 	<form method="post">
+			 	<h5>Convidado</h5>
+			 	<div class="row">
+			 		<div class="input-field col s6">
+			 		Nome: <input type="text" name="nomeConvidado"/>
+			 		<th:block th:include="mensagemValidacao"></th:block>
+			 		</div>
+			 		<div class="input-field col s6">
+			 		Rg: <input type="text" name="rg"/>
+			 		</div>
+			 	</div>
+			 	<button class="waves-effect waves-light btn" type="submit"><i class="material-icons left">save</i>Adicionar</button>
+		 	</form>
+	 	</div>
+		
+	 	<div class="container">
+	 		<h5>Lista de Convidados</h5>
+	 	</div>
+		<Table class="container" >
+		 <thead>
+			<tr>
+				<th>Convidado</th>
+				<th>Rg</th>
+			</tr>
+		 </thead>
+		 <tbody>
+			<tr th:each="convidado : ${convidados}">
+			 	<td><p><span th:text="${convidado.nomeConvidado}"></span></p></td>		 			
+			 	<td><p><span th:text="${convidado.rg}"></span></p></td>
+			</tr>
+		 </tbody>
+		</Table>
 		
 	 <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
      <script type="text/javascript" src="/materialize/js/materialize.min.js"></script>

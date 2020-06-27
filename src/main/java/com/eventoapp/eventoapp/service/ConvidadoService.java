@@ -2,8 +2,12 @@ package com.eventoapp.eventoapp.service;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eventoapp.eventoapp.models.Convidado;
 import com.eventoapp.eventoapp.models.Evento;
@@ -19,15 +23,14 @@ public class ConvidadoService {
 	@Autowired
 	private EventoRepository rep;
 
-	public String postConvidado(Long id, Convidado convidado) {
+	public String postConvidado(Long id,  @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes) {
 		Optional<Evento> opt = rep.findById(id);
-		
+
 		if(opt.isPresent()) {
 		Evento evento = opt.get();
 		convidado.setEvento(evento);
 		cr.save(convidado);
 		}
-		
 		
 		return "Adicionado com sucesso";
 	}

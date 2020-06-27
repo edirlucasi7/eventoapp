@@ -6,7 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.eventoapp.eventoapp.models.Convidado;
 import com.eventoapp.eventoapp.models.Evento;
+import com.eventoapp.eventoapp.repository.ConvidadoRepository;
 import com.eventoapp.eventoapp.repository.EventoRepository;
 
 @Service
@@ -14,6 +16,9 @@ public class EventoService {
 	
 	@Autowired
 	private EventoRepository rep;
+	
+	@Autowired
+	private ConvidadoRepository cr;
 	
 	public ModelAndView getAllEvento() {
 		ModelAndView mv = new ModelAndView("index");
@@ -28,6 +33,10 @@ public class EventoService {
 		if(opt.isPresent()) {
 			Evento evento = opt.get();
 			mv.addObject("evento", evento);
+			
+			Iterable<Convidado> convidados = cr.findByEvento(evento);
+			mv.addObject("convidados", convidados);
+			
 			return mv;
 		} else {
 			return null;
