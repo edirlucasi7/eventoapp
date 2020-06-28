@@ -9,6 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -60,6 +61,13 @@ public class EventoController {
 		attributes.addFlashAttribute("mensagem", "Adicionado com sucesso!");
 		return "redirect:/api/v1/eventos/cadastrarEventos";
 		
+	}
+	
+	@PutMapping("/eventos/cadastrarEventos")
+	public String atualizaEvento(@PathVariable("id") Long id, Evento evento) {
+		service.updateEvento(id, evento);
+		
+		return "redirect:/api/v1/eventos/cadastrarEventos";
 	}
 	
 	@GetMapping("/eventos/detalhesEvento/{id}")
