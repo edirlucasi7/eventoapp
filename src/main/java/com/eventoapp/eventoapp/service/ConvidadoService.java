@@ -23,7 +23,7 @@ public class ConvidadoService {
 	@Autowired
 	private EventoRepository rep;
 
-	public String postConvidado(Long id,  @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes) {
+	public void postConvidado(Long id,  @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes) {
 		Optional<Evento> opt = rep.findById(id);
 
 		if(opt.isPresent()) {
@@ -32,6 +32,6 @@ public class ConvidadoService {
 		cr.save(convidado);
 		}
 		
-		return "Adicionado com sucesso";
 	}
+	
 }

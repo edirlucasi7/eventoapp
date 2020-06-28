@@ -14,11 +14,16 @@
       
 </head>
 <body>
-	 <div class="container">
-	 	<h1>Evento</h1>
-	 	<h3><a href="/api/v1/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista do Eventos</a></h3>
-	 </div>
-	 
+	 <header> 
+		<nav>
+		  <div class="nav-wrapper">
+		     <a href="#" class="brand-logo">Evento</a>
+		     <ul id="nav-mobile" class="right hide-on-med-and-down">
+		       <li><a href="/api/v1/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista do Eventos</a></li>
+		     </ul>
+		  </div>
+		</nav>
+	 </header>
 	 <div th:each="evento : ${evento}" class="container">
 		 	<div class="row">
 		 		<p>Nome: <span th:text="${evento.nome}"></span></p>
@@ -49,12 +54,14 @@
 			<tr>
 				<th>Convidado</th>
 				<th>Rg</th>
+				<th>Deletar</th>
 			</tr>
 		 </thead>
 		 <tbody>
 			<tr th:each="convidado : ${convidados}">
 			 	<td><p><span th:text="${convidado.nomeConvidado}"></span></p></td>		 			
 			 	<td><p><span th:text="${convidado.rg}"></span></p></td>
+			 	<td><a class="btn-floating waves-effect waves-light green-small" th:href="${(#mvc.url('CC#deletaConvidado').arg(0, convidado.rg)).build()}"><i class="material-icons left">delete</i></a></td>
 			</tr>
 		 </tbody>
 		</Table>

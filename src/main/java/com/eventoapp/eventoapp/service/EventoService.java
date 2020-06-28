@@ -2,9 +2,13 @@ package com.eventoapp.eventoapp.service;
 
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eventoapp.eventoapp.models.Convidado;
 import com.eventoapp.eventoapp.models.Evento;
@@ -44,7 +48,20 @@ public class EventoService {
 		
 	}
 	
-	public Evento postEvento(Evento evento) {
+	public boolean deleteIdEvento(Long id) {
+		Optional<Evento> evento = rep.findById(id);
+		
+		if(evento.isPresent()) {
+			Evento ev = evento.get();
+			rep.delete(ev);
+			return true;
+		} else {
+			return false;
+		}
+		
+	}
+	
+	public Evento postEvento(@Valid Evento evento, BindingResult result, RedirectAttributes attributes) {
 		return rep.save(evento);
 	}
 }

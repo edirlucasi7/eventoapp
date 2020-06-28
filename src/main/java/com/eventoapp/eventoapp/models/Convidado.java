@@ -4,8 +4,7 @@ package com.eventoapp.eventoapp.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotBlank;
-//import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotEmpty;
 
 
 import lombok.Data;
@@ -15,10 +14,10 @@ import lombok.Data;
 public class Convidado {
 
 	@Id
-	@NotBlank
+	@NotEmpty
 	private String rg;
 	
-	@NotBlank
+	@NotEmpty
 	private String nomeConvidado;
 	
 	@ManyToOne
