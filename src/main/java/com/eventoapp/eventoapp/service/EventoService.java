@@ -58,8 +58,6 @@ public class EventoService {
 			return null;
 		}
 		
-		
-		
 	}
 	
 	public void postEvento(@Valid Evento evento, BindingResult result, RedirectAttributes attributes) {

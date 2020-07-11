@@ -8,6 +8,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.eventoapp.eventoapp.models.Convidado;
@@ -38,6 +40,24 @@ public class ConvidadoController {
 		
 		return "redirect:/api/v1/eventos/detalhesEvento/{id}";
 	}
+	
+	@RequestMapping("/eventos/editarConvidado/{rg}")
+	public ModelAndView updateFormConvidado(@PathVariable("rg") String rg) {
+		ModelAndView mv = new ModelAndView("convidado/atualizaConvidado");
+		
+		Convidado convidado = cr.findByRg(rg);
+		mv.addObject("convidado", convidado);
+	
+		return mv;
+	}
+	
+	@RequestMapping(value = "/eventos/editarConvidado/{rg}", method = RequestMethod.POST)
+	public String atualizarEvento(@PathVariable("rg") String rg, Convidado convidado) {
+		
+		cs.putConvidado(rg, convidado);
+		return "redirect:/api/v1/eventos";
+	}
+	
 	
 	@RequestMapping("/deletarConvidado")
 	public String deletaConvidado(String rg) {

@@ -39,7 +39,7 @@ public class EventoController {
 			return mv;
 		}
 	}
-	
+
 	@RequestMapping("/eventos/editarEventos/{id}")
 	public ModelAndView updateForm(@PathVariable("id") Long id) {
 		ModelAndView mv = new ModelAndView("evento/atualizaEvento");		

@@ -34,4 +34,20 @@ public class ConvidadoService {
 		
 	}
 	
+	public Convidado putConvidado(String rg, Convidado convidado) {
+		Convidado co = cr.findByRg(rg);
+		
+		if(co.getRg() != null) {
+			Convidado convi = co;
+			convi.setNomeConvidado(convidado.getNomeConvidado());
+			
+			cr.save(convi);
+			return convi;
+		} else {
+			return null;
+		}
+		
+		
+	}
+	
 }
