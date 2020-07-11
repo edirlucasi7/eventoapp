@@ -36,12 +36,12 @@ public class Evento {
 		
 	}
 
-	public Evento(Long id, String nome, String local, String data, String hora) {
-		this.id = id;
-		this.nome = nome;
-		this.local = local;
-		this.data = data;
-		this.hora = hora;
+	@Override
+	public String toString() {
+		return "Evento [id=" + id + ", nome=" + nome + ", local=" + local + ", data=" + data + ", hora=" + hora + "]";
 	}
+	
+	
+	
 
 }

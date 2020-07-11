@@ -48,22 +48,41 @@ public class EventoService {
 		
 	}
 	
-	public Evento postEvento(@Valid Evento evento, BindingResult result, RedirectAttributes attributes) {
-		return rep.save(evento);
-	}
-	
-	public void updateEvento(Long id, Evento evento) {
+	public Evento getEvento(Long id) {
 		Optional<Evento> opt = rep.findById(id);
 		
 		if(opt.isPresent()) {
-			Evento db = opt.get();
-			db.setNome(evento.getNome());
-			db.setLocal(evento.getLocal());
-			db.setData(evento.getData());
-			db.setHora(evento.getHora());
-			
-			rep.save(db);
+			Evento evento = opt.get();
+			return evento;
+		} else {
+			return null;
 		}
+		
+		
+		
+	}
+	
+	public void postEvento(@Valid Evento evento, BindingResult result, RedirectAttributes attributes) {
+		rep.save(evento);
+	}
+	
+	public Evento putEvento(Long id, @Valid Evento evento, BindingResult result, RedirectAttributes attributes) {
+		Optional<Evento> opt = rep.findById(id);
+		
+		if(opt.isPresent()) {
+			Evento ev = opt.get();
+			ev.setNome(evento.getNome());
+			ev.setLocal(evento.getLocal());
+			ev.setData(evento.getData());
+			ev.setHora(evento.getHora());
+			
+			rep.save(ev);
+			return ev;
+		} else {
+			return null;
+		}
+
+		
 	}
 	
 	public boolean deleteIdEvento(Long id) {
