@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+//import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import com.eventoapp.eventoapp.service.ConvidadoService;
 
 @Controller
 @RequestMapping("/api/v1")
+//@CrossOrigin(origins="*")
 public class ConvidadoController {
 
 	@Autowired
@@ -52,10 +54,17 @@ public class ConvidadoController {
 	}
 	
 	@RequestMapping(value = "/eventos/editarConvidado/{rg}", method = RequestMethod.POST)
-	public String atualizarEvento(@PathVariable("rg") String rg, Convidado convidado) {
+	public String atualizarConvidado(@PathVariable("rg") String rg, @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes) {
+
+		if(result.hasErrors()) {
+			attributes.addFlashAttribute("mensagem", "Preencha o campo!");
+			return "redirect:/api/v1/eventos/editarConvidado/{rg}";
+		}
 		
-		cs.putConvidado(rg, convidado);
+		cs.putConvidado(rg, convidado, result, attributes);
+		attributes.addFlashAttribute("mensagem", "Convidado atualizado com sucesso!");
 		return "redirect:/api/v1/eventos";
+		
 	}
 	
 	

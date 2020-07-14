@@ -34,7 +34,7 @@ public class ConvidadoService {
 		
 	}
 	
-	public Convidado putConvidado(String rg, Convidado convidado) {
+	public Convidado putConvidado(String rg, @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes) {
 		Convidado co = cr.findByRg(rg);
 		
 		if(co.getRg() != null) {

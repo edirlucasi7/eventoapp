@@ -36,6 +36,7 @@
 			</tr>
 		</thead>
 		<tbody>	 
+		<th:block th:include="mensagemValidacao"></th:block>
 	 		<tr th:each="evento : ${eventos}">
 		 		<td><a th:href="${(#mvc.url('EC#detalhesEvento').arg(0, evento.id)).build()}"><span th:text="${evento.nome}"></span></a></td>
 		 		<td><span th:text="${evento.local}"></span></td>
