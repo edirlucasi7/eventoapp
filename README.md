@@ -1,4 +1,4 @@
 # EventoApp
-Projeto com SrptingBoot e framework css materialize. 
+Projeto com SpringBoot e framework css materialize. 
 
 Cadastro de Eventos
