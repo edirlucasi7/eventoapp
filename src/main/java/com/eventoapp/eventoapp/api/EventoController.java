@@ -2,7 +2,6 @@ package com.eventoapp.eventoapp.api;
 
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,9 +19,12 @@ import com.eventoapp.eventoapp.service.EventoService;
 @RequestMapping("/api/v1")
 public class EventoController {
 	
-	@Autowired
-	private EventoService service;
+	private final EventoService service;
 	
+	public EventoController(EventoService service) {
+		this.service = service;
+	}
+
 	@GetMapping("/eventos/cadastrarEventos")
 	public String retornaEventos() {
 		
