@@ -17,11 +17,14 @@
 		<nav>
 		  <div class="nav-wrapper">
 		     <a href="#" class="brand-logo center">Atualizar Convidado</a>
-		     <ul id="nav-mobile" class="left hide-on-med-and-down">
-		       <li><a href="/api/v1/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a></li>
-		     </ul>
 		  </div>
 		</nav>
+		
+		<div class="nav-wrapper">
+      			<ul class="center hide-on-med-and-down">
+        			<li><a href="/api/v1/eventos" class="waves-effect waves-light btn"><i class="material-icons left">format_list_bulleted</i>Lista de Eventos</a></li>
+      			</ul>
+    	 </div>
 	</header>
 	<form action="#" th:action="@{/api/v1/eventos/editarConvidado/{rg}(rg = ${convidado.rg})}"  th:bject="${convidado}" class="container" method="post" th:each="convidado : ${convidado}">
 		<div class="row">
