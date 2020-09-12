@@ -3,7 +3,6 @@ package com.eventoapp.eventoapp.api;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 //import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,7 +30,6 @@ public class ConvidadoController {
 	private ConvidadoRepository cr;
 	
 	@PostMapping("/eventos/detalhesEvento/{id}")
-	@Secured({ "ROLE_ADMIN" })
 	public String cadastraConvidado(@PathVariable("id") Long id, @Valid Convidado convidado, BindingResult result, RedirectAttributes attributes) {
 		
 		if(result.hasErrors()) {
