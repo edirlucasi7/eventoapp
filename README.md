@@ -13,10 +13,5 @@ implementação de interface UserDatailsService, criação das entidades usuario
 #Instruções
 - Projeto com back-end e front-end funcionais. 
 - Java 8.
-- Aconselho baixar o zip do arquivo, pois o git clone faz uma bagunça com os diretórios.
 - O projeto tem autenticação com dois tipos de usuários(admin, user).
-- A página de login é a gerada pelo próprio spring security.
-- As autenticações cadastradas no banco são:
-login: admin senha: 123 e login: user senha: 123
 - Somente o usuário autenticado como administrador tem permissão para cadastrar um convidado em um evento específico.
-- O sistema ainda está em desenvolvimento e sempre que puder irei trazer atualizações.
